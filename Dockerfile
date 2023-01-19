@@ -1,9 +1,11 @@
 FROM php:7.4-cli
 
-USER root
+MAINTAINER oayanda oayanda@oayanda.com
 
+# Application working directory
 WORKDIR /todo
 
+# Install required PHP dependencies
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     zlib1g-dev \
@@ -20,17 +22,16 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install zip \
     && docker-php-source delete
 
+# Downlod composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-
-
-RUN COMPOSER_ALLOW_SUPERUSER=1
-
+# Copy all files from the source directory to destination (WORKDIR/todo)
 COPY . .
 
+# Composer install all dependencies required for the application
 RUN composer install 
 
-
+# Open this port
 EXPOSE 8000
 
 ENTRYPOINT [ "bash", "app.sh" ]
