@@ -2,7 +2,7 @@ FROM php:7.4-cli
 
 USER root
 
-WORKDIR /var/www/html
+# WORKDIR /var/www/html
 
 RUN apt-get update && apt-get install -y \
     libpng-dev \
@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# RUN mv .env.sample .env
+
 
 RUN COMPOSER_ALLOW_SUPERUSER=1
 
