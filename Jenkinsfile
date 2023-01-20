@@ -38,7 +38,7 @@ pipeline {
 				
 				sh 'docker logout'
 
-				sh 'docker system prune -f'
+				
 			}
 		}
     }
