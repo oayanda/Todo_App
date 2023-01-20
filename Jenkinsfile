@@ -32,13 +32,21 @@ pipeline {
                 sh 'docker push oayanda/todo:$GIT_BRANCH-0.0.$BUILD_NUMBER'
             }
         }
-       
+       stage('Cleanup') {
+			steps {
+				cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
+				
+				sh 'docker logout'
+
+				sh 'docker system prune -f'
+			}
+		}
     }
-post {
-        always {
-            sh 'docker logout'
-        }
-    }
+// post {
+//         always {
+//             sh 'docker logout'
+//         }
+//     }
     // stage('Clean Workspace After Buiild'){
     //     steps{
     //        CleanWs()
