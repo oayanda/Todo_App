@@ -25,11 +25,7 @@ pipeline {
                 sh 'docker push oayanda/todo:$BUILD_NUMBER'
             }
         }
-        stage('Clean Workspace After Buiild'){
-        steps{
-           CleanWs()
-        }
-    }
+       
     }
 post {
         always {
