@@ -13,7 +13,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t oayanda/todo:$GIT_BRANCH-$BUILD_NUMBER .'
+                sh 'docker build -t oayanda/todo:$GIT_BRANCH-0.0.$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push oayanda/todo:$GIT_BRANCH-$BUILD_NUMBER'
+                sh 'docker push oayanda/todo:$GIT_BRANCH-0.0.$BUILD_NUMBER'
             }
         }
        
