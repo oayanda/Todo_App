@@ -13,9 +13,9 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: ${db}
-      MYSQL_USER: ${username}
-      MYSQL_PASSWORD: ${password}
+      MYSQL_DATABASE: toolingdb
+      MYSQL_USER: oayanda
+      MYSQL_PASSWORD: password
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql
