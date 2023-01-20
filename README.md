@@ -13,4 +13,3 @@ php artisan serve
 
 ### To resolve docker login issue 
 Run sudo chmod 666 /var/run/docker.sock
-Aother Another
