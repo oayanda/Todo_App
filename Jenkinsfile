@@ -25,16 +25,20 @@ pipeline {
                 sh 'docker push oayanda/todo-php:$branch_name-$BUILD_NUMBER'
             }
         }
-}
-   post {
-        always {
-            sh 'docker logout'
-        }
-    }
-    stage('Clean Workspace After Buiild'){
+        stage('Clean Workspace After Buiild'){
         steps{
            CleanWs()
         }
     }
- 
+    }
+post {
+        always {
+            sh 'docker logout'
+        }
+    }
+    // stage('Clean Workspace After Buiild'){
+    //     steps{
+    //        CleanWs()
+    //     }
+    // }
 }
