@@ -42,14 +42,5 @@ pipeline {
 			}
 		}
     }
-// post {
-//         always {
-//             sh 'docker logout'
-//         }
-//     }
-    // stage('Clean Workspace After Buiild'){
-    //     steps{
-    //        CleanWs()
-    //     }
-    // }
+
 }
