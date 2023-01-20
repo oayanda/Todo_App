@@ -4,7 +4,13 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('oayanda-dockerhub')
     }
     stages { 
-        
+        stage("Initial cleanup") {
+			steps {
+				dir("${WORKSPACE}") {
+					deleteDir()
+				}
+			}
+		}
         stage('SCM Checkout') {
             steps{
             git branch: 'main', url: 'https://github.com/oayanda/Todo_App.git'
