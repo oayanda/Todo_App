@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t oayanda/todo-php:$BUILD_NUMBER .'
+                sh 'docker build -t oayanda/todo-php:$branch_name-$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -22,13 +22,18 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push oayanda/todo-php:$BUILD_NUMBER'
+                sh 'docker push oayanda/todo-php:$branch_name-$BUILD_NUMBER'
             }
         }
 }
 post {
         always {
             sh 'docker logout'
+        }
+    }
+    stage('Clean Workspace After Buiild'){
+        steps{
+           CleanWs()
         }
     }
 }
