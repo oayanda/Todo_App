@@ -3,9 +3,9 @@ services:
   frontend:
     build: .
     ports:
-      - "5000:80"
+      - "8000:8000"
     volumes:
-      - tooling_frontend:/var/www/html
+      - todo_frontend:/var/www/html
     links:
       - db
 
@@ -13,7 +13,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: toolingdb
+      MYSQL_DATABASE: homestead
       MYSQL_USER: oayanda
       MYSQL_PASSWORD: password
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
@@ -21,5 +21,5 @@ services:
       - db:/var/lib/mysql
 
 volumes:
-  tooling_frontend:
+  todo_frontend:
   db:
