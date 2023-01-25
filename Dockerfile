@@ -25,6 +25,8 @@ RUN apt-get update && apt-get install -y \
 # Downlod composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN COMPOSER_ALLOW_SUPERUSER=1
+
 # Copy all files from the source directory to destination (WORKDIR/todo)
 COPY . .
 
