@@ -57,7 +57,7 @@ pipeline {
 				cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true, deleteDirs: true)
 				
 		                sh " docker rm $(docker ps -q)"
-                                sh " docker system prune"
+                                sh " docker rmi $(docker images)"
                    			
 			}
 		}
