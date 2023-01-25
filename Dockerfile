@@ -2,6 +2,8 @@ FROM php:7.4-cli
 
 MAINTAINER oayanda oayanda@oayanda.com
 
+USER root
+
 # Application working directory
 WORKDIR /todo
 
